@@ -30,6 +30,10 @@ Mask:
 {1:08b}  {2:08b}  {3:08b}  {4:08b}
 """
 
+bin_ip_template = """
+{:08b}{:08b}{:08b}{:08b}
+"""
+
 ip,mask = socket.split("/")
 
 gr1,gr2,gr3,gr4 = ip.split(".")
@@ -43,7 +47,19 @@ m1,m2,m3,m4 = [
     int(binary_mask[24:32], 2)
 ]
 
-print(ip_template.format(int(gr1),int(gr2),int(gr3),int(gr4)))
+bin_ip = bin_ip_template.format(int(gr1),int(gr2),int(gr3),int(gr4))
+bin_s = bin_ip[:int(mask)] + "0" * (32 - int(mask))
+
+n1,n2,n3,n4 = [
+    int(bin_s[0:8], 2),
+    int(bin_s[8:16], 2),
+    int(bin_s[16:24], 2),
+    int(bin_s[24:32], 2)
+]
+
+
+
+print(ip_template.format(n1,n2,n3,n4))
 print(mask_template.format(int(mask),m1,m2,m3,m4))
 
 
