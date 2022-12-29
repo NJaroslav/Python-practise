@@ -1,3 +1,41 @@
+'''
+Task 9.1
+Create generate_access_config function that generates configuration 
+for access ports.
+
+The function expects arguments:
+
+a dictionary with interface as a key and VLAN as a value 
+(access_config or access_config_2 dict)
+
+access ports configuration template as a list of commands 
+(access_mode_template list)
+
+The function should return a list of all ports in access mode with configuration based
+on the access_mode_template template.
+
+In this task, the beginning of the function is written and you just need to 
+continue writing the function body itself.
+
+An example of a final list (each string is written on a new line for readability):
+
+[
+"interface FastEthernet0/12",
+"switchport mode access",
+"switchport access vlan 10",
+"switchport nonegotiate",
+"spanning-tree portfast",
+"spanning-tree bpduguard enable",
+"interface FastEthernet0/17",
+"switchport mode access",
+"switchport access vlan 150",
+"switchport nonegotiate",
+"spanning-tree portfast",
+"spanning-tree bpduguard enable",
+...]
+Check the operation of the function using the access_config dictionary and the list of commands access_mode_template. If the previous check was successful, check the function again using the dictionary access_config_2 and make sure that the final list contains the correct interface numbers and vlans.
+'''
+
 access_mode_template = [
     "switchport mode access",
     "switchport access vlan",
