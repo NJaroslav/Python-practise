@@ -12,7 +12,8 @@ def parse_cdp_neighbors(command_output):
             main_id = line.split('>')[0]
         dev_inf = line.split()
         if len(dev_inf) >= 4 and dev_inf[3].isdigit():
-            res[(main_id, dev_inf[1] +  dev_inf[2])] = (dev_inf[0], dev_inf[8]+ dev_inf[9])
+            r_host, l_int, l_int_num, *other, r_int, r_int_num = dev_inf
+            res[(main_id, l_int + l_int_num)] = (r_host, r_int + r_int_num)
     return res
 
 
